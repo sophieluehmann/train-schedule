@@ -3,12 +3,15 @@
 
 <head>
     <title>Train Time</title>
+    
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Import Jquery -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-database.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    
     <!-- Link to Moment.js should go here -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
@@ -27,10 +30,9 @@
                 <tr>
                     <th scope="col">Train Name</th>
                     <th scope="col">Destination</th>
-                    <th scope="col">Frequency</th>
+                    <th scope="col">Frequency (Min)</th>
                     <th scope="col">Next Arrival</th>
                     <th scope="col">Minutes Away</th>
-                    <th scope="col">Total Billed ($) </th>
                 </tr>
             </thead>
             <tbody id="tableBody">
@@ -53,7 +55,7 @@
                 <input type="time" class="form-control" id="startTime">
             </div>
             <div class="form-group">
-                <label for="Frequency">Frequency</label>
+                <label for="Frequency">Frequency (Min)</label>
                 <input type="number" class="form-control" id="Frequency">
             </div>
             <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
