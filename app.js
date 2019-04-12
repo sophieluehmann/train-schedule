@@ -61,20 +61,11 @@ database.ref().on("child_added", function(snapshot, prevChildKey) {
     var tableDest = $("<td>");
     tableRow.append(tableDest.text(snapshot.val().dest));
 
-    //var tableWork = $("<td>");
-    //tableRow.append(tableWork.text(monthWorked));
-
     var tableFreq = $("<td>");
     tableRow.append(tableFreq.text(snapshot.val().freq));
 
     var tableTime = $("<td>");
     tableRow.append(tableTime.text(snapshot.val().startTime));
-
-   //var tableBill = $("<td>");
-    //tableRow.append(tableBill.text(monthWorked*snapshot.val().rate));
-
-    console.log(snapshot.val());
-    console.log(snapshot.val().name)
     
 })
 
