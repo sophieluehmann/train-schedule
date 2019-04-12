@@ -47,8 +47,10 @@ database.ref().on("child_added", function(snapshot, prevChildKey) {
 
     console.log(prevChildKey);
 
-    //var time = moment(snapshot.val().startTime;
-    //var monthWorked = Math.abs(date.diff(moment(),"months"));
+    var time = moment(snapshot.val().startTime);
+    console.log(time);  
+    var timeSince = startTime.diff(now, 'minutes');
+    console.log(timeSince);
 
     var tableRow = $("<tr>");
     $("#tableBody").append(tableRow);
