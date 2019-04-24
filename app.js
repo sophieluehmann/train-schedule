@@ -38,7 +38,7 @@ $("#submitBtn").on("click", function (event) {
         dest: dest,
         startTime: startTime,
         freq: freq,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        dateAdded: firebase.database.ServerValue.TIMESTAMP,
       });
 
 })
@@ -47,11 +47,26 @@ database.ref().on("child_added", function(snapshot, prevChildKey) {
 
     console.log(prevChildKey);
 
-    var time = moment(snapshot.val().startTime);
-    console.log(time);  
-    var timeSince = startTime.diff(now, 'minutes');
-    console.log(timeSince);
-
+    //var time = moment(snapshot.val().startTime);
+    
+    var start_time = moment(startTime, 'HH:mm a');
+    var end_time = moment();
+    var duration = moment.duration(end_time.diff(start_time));
+    var minutes = duration.asMinutes();
+    var until = freq - (minutes % freq);
+    console.log(until);
+    var nextArrive = end_time.add(until, 'minutes').format("HH:mm a");
+    console.log(minutes);
+    
+    console.log(until);
+    console.log(nextArrive);
+    
+    //var startTime=moment("12:16:59 am", "HH:mm:ss a");
+    //var endTime=moment("06:12:07 pm", "HH:mm:ss a");
+    //var duration = moment.duration(endTime.diff(startTime));
+    //var timeSince = moment.duration(now.diff(time));
+    //console.log(timeSince);
+    
     var tableRow = $("<tr>");
     $("#tableBody").append(tableRow);
 
@@ -65,7 +80,10 @@ database.ref().on("child_added", function(snapshot, prevChildKey) {
     tableRow.append(tableFreq.text(snapshot.val().freq));
 
     var tableTime = $("<td>");
-    tableRow.append(tableTime.text(snapshot.val().startTime));
+    tableRow.append(tableTime.text(nextArrive));
+
+    var tableUntil = $("<td>");
+    tableRow.append(tableUntil.text(until));
     
 })
 
